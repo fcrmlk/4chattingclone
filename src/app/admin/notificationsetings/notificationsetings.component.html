@@ -1,0 +1,64 @@
+<!-- Striped row layout section start -->
+<section id="striped-row-form-layouts">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="content-header">{{ "Notification" | translate }}</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <div class="px-3">
+            <form class="form form-horizontal striped-rows form-bordered" [formGroup]="mailForm" (ngSubmit)="onGeneralFormSubmit(mailForm.value)"
+              novalidate>
+              <div class="form-body">
+                <h4 class="form-section">
+                  <i class="ft-file-text"></i>{{ "Firebase Cloud Messaging - Android" | translate }}</h4>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput9">{{ "FCM (Firebase Cloud Messaging) Server Key" | translate }}</label>
+                  <div class="col-md-9">
+                    <textarea id="fcm_key" rows="5" class="form-control round" #fcm_key id="fcm_key" formControlName="fcm_key" [ngModel]="sitedata && sitedata?.fcm_key"></textarea>
+                  </div>
+                </div>
+                <h4 class="form-section">
+                  <i class="ft-file-text"></i>{{ "Apple Push Notification Service" | translate }}</h4>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Voice Over IP (VoIP) Certificate" | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="file" id="voip_certificate_file" class="form-control" (change)="uploadVoip(this.mailForm)" #voip_certificate_file
+                    />
+                  </div>
+                </div>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Voice Over IP (VoIP) Key" | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="file" id="voip_key_file" class="form-control" (change)="uploadVoipKey(this.mailForm)" />
+                  </div>
+                </div>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Passphrase (Used on certificate conversion)" | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="text" formControlName="voip_passpharse" id="voip_passpharse" #voip_passpharse [ngModel]="sitedata && sitedata?.voip_passpharse"
+                      class="form-control round">
+                  </div>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn btn-secondary mr-1 btn-raised btn-round" (click)="onFormReset()">
+                  <i class="ft-refresh-cw position-right"></i> {{ "Cancel" | translate }}
+                </button>
+                <button type="submit" class="btn btn-raised gradient-red-pink mr-1 white white btn-raised btn-round">
+                  <i class="ft-thumbs-up position-right"></i> {{ "Save" | translate }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- // Striped row layout section end -->

@@ -1,0 +1,105 @@
+<!-- Striped row layout section start -->
+<section id="striped-row-form-layouts">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="content-header">{{ 'Site Settings' | translate }}</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="px-3">
+            <form class="form form-horizontal striped-rows form-bordered" [formGroup]="generalForm" (ngSubmit)="onGeneralFormSubmit(generalForm.value)"
+              novalidate>
+              <div class="form-body">
+                <h4 class="form-section">
+                  <i class="ft-user"></i>{{ 'Site Information' | translate }}</h4>
+                <div class="form-group row">
+                  <label class="col-md-3 label-control" for="projectinput1">{{ 'Site Title' | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="text" id="site_title" formControlName="site_title" #site_title [ngModel]="generaldata && generaldata?.site_title"
+                      class="form-control round" required>
+                    <small class="form-text text-muted danger" *ngIf="generalForm.controls['site_title'].touched && !generalForm.controls['site_title'].valid && generalForm.controls['site_title'].hasError('required')">{{ 'Please enter a site title' | translate }}</small>
+                  </div>
+                </div>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput9">{{ 'Banner Text' | translate }}</label>
+                  <div class="col-md-9">
+                    <textarea id="projectinput9" rows="5" class="form-control round" #banner_text id="banner_text" formControlName="banner_text"
+                      [ngModel]="generaldata && generaldata?.banner_text"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput9">{{ 'Footer Text' | translate }}</label>
+                  <div class="col-md-9">
+                    <textarea id="projectinput9" rows="5" class="form-control round" formControlName="footer_text" id="footer_text" #footer_text
+                      [ngModel]="generaldata && generaldata?.footer_text"></textarea>
+                  </div>
+                </div>
+                <h4 class="form-section">
+                  <i class="ft-file-text"></i>{{ 'Appstore Links' | translate }}</h4>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ 'Android' | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="text" formControlName="android_store" id="android_store" #android_store [ngModel]="generaldata && generaldata?.android_store"
+                      class="form-control round">
+                  </div>
+                </div>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ 'iOS' | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="text" formControlName="ios_store" id="ios_store" #ios_store [ngModel]="generaldata && generaldata?.ios_store"
+                      class="form-control round">
+                  </div>
+                </div>
+                <h4 class="form-section">
+                  <i class="ft-file-text"></i>{{ 'Socialapp Links' | translate }}</h4>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ 'Facebook' | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="text" formControlName="facebook_link" id="facebook_link" #facebook_link [ngModel]="generaldata && generaldata?.facebook_link"
+                      class="form-control round">
+                  </div>
+                </div>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ 'Twitter' | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="text" formControlName="twitter_link" id="twitter_link" #twitter_link [ngModel]="generaldata && generaldata?.twitter_link"
+                      class="form-control round">
+                  </div>
+                </div>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ 'Google +' | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="text" formControlName="google_link" id="google_link" #google_link [ngModel]="generaldata && generaldata?.google_link"
+                      class="form-control round">
+                  </div>
+                </div>
+                   <h4 class="form-section">
+                  <i class="ft-file-text"></i>{{ 'Default Settings' | translate }}</h4>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ 'About Text(For App)' | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="text" formControlName="about_text" id="about_text" #about_text [ngModel]="generaldata && generaldata?.about_text"
+                      class="form-control round">
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn btn-secondary mr-1 btn-raised btn-round" (click)="onFormReset()">
+                  <i class="ft-refresh-cw position-right"></i> {{ 'Cancel' | translate }}
+                </button>
+                <button type="submit" class="btn btn-raised gradient-red-pink mr-1 white white btn-raised btn-round">
+                  <i class="ft-thumbs-up position-right"></i> {{ 'Save' | translate }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- // Striped row layout section end -->

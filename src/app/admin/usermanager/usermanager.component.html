@@ -1,0 +1,137 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="content-header">{{ 'Users' | translate }}</div>
+  </div>
+</div>
+<section id="shopping-cart">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="px-3">
+            <form class="form">
+              <div class="form-body">
+                <div class="row">
+                  <div class="col-sm-12 col-md-9">&nbsp;</div>
+                  <div class="col-sm-12 col-md-3">
+                    <div>
+                     <input type="text" class="form-control form-control-sm" autocomplete="off" name="search" (keyup)="applyFilter($event.target.value)" placeholder="{{ 'Search user' | translate }}">
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </form>
+         </div>
+         <div class="card-block tableres">
+          <table class="table table-striped text-left">
+            <thead>
+              <tr>
+                <th (click)="sort('_id')">{{ 'S.no' | translate }}</th>
+                <th>{{ 'Profile' | translate }}</th>
+                <th (click)="sort('user_name')">{{ 'Name' | translate }}
+                  <span class="ft-arrow-up" *ngIf="key =='user_name'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                </th>
+                <th (click)="sort('phone_no')">{{ 'Phone no' | translate }}
+                  <span class="ft-arrow-up" *ngIf="key =='phone_no'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                </th>
+                <th (click)="sort('join_at')">{{ 'Country' | translate }}
+                  <span class="ft-arrow-up" *ngIf="key =='join_at'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                </th>
+                <th (click)="sort('join_at')">{{ 'Last Seen' | translate }}
+                  <span class="ft-arrow-up" *ngIf="key =='join_at'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                </th>
+                <th (click)="sort('phone_no')">{{ 'View' | translate }}
+                  <span class="ft-arrow-up" *ngIf="key =='phone_no'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of totalusers | orderBy: key : !reverse  | filter:filter  | paginate: { id: 'server2', itemsPerPage: 15, currentPage: p, totalItems: totaluserscount };  let i = index;">
+                <td *ngIf="(p===1)">{{i+1}}</td>
+                <td *ngIf="(p!==1)">{{(i+1)+(15*(p-1))}}</td>
+                <td>                                          <span class="userpicdiv">  <img *ngIf="user.user_image === ''" class="media-object round-media" src="{{this.url}}/assets/public/users/customer_default.png">
+                 <img *ngIf="user.user_image !== ''" class="dpimg media-object round-media" src="{{this.url}}/assets/public/users/{{user.user_image}}"> <span *ngIf="user.livestatus === 'online'"class="activestatus"></span>
+                 <span *ngIf="user.livestatus !== 'online'" class="awaystatus"></span>
+               </span>
+             </td>
+             <td class="textfirstcap">{{user.user_name}}</td>
+             <td>{{ user.phone_no }}</td>
+             <td>{{ user.country}}</td>
+             <td *ngIf="user.livestatus !== 'online'">
+               {{user.lastseen | date: 'MMM d, y hh:mm a'}}
+             </td>
+             <td *ngIf="user.livestatus === 'online'">
+             {{ 'online' | translate }}</td>
+             <td>
+              <a [routerLink]="['/admin/viewuser',user._id]" class="btn btn-outline-primary mr-1 btn-fab">
+                <i class="ft-zoom-in" ngbTooltip="{{ 'View' | translate }}"></i>
+              </a>
+            </td>
+          </tr>
+          <tr *ngIf="( (totalusers)  && ((totalusers  | filter:filter).length === 0))">
+            <td colspan="7" style="text-align:center;">{{ 'No users found' | translate }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="getPage($event, filterValue)" id="server2"></pagination-controls>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+<style type="text/css">
+  .media-object
+  {
+    display: inline-block !important;
+    height: 40px !important;
+    width: 40px !important;
+    border-radius: 40px;
+    background-color: #fff;
+    float: left
+  }
+  .activestatus
+  {
+    background-color: #54d371 !important;
+    min-width: 12px !important;
+    min-height: 12px;
+    border-radius: 10px;
+    position: absolute;
+    border-color: #fff;
+    left: unset;
+    right: -3px;
+    top:6px;
+    position: absolute;
+  }
+  .awaystatus
+  {
+    background-color: #6c757d !important;
+    min-width: 12px !important;
+    min-height: 12px;
+    border-radius: 10px;
+    position: absolute;
+    border-color: #fff;
+    left: unset;
+    right: -3px;
+    top:6px;
+    position: absolute;
+  }
+  .dpimg
+  {
+    position: relative;
+  }
+  .userpicdiv
+  {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+  }
+  .table td
+  {
+    vertical-align: middle !important;
+  }
+  .textfirstcap:first-letter {
+    text-transform:capitalize;
+  }
+</style>

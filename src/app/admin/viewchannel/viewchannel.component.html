@@ -1,0 +1,137 @@
+<!-- Striped row layout section start -->
+<section id="striped-row-form-layouts">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="content-header">{{ "Channel Info" | translate }}</div>
+    </div>
+  </div>
+
+
+
+   <div class="row">
+    <div class="col-xl-8 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <div class="px-3">
+         
+              <div class="form-body">
+
+              	 <div class="form-group row last">
+               
+              	<img *ngIf="userchannel_info.channel_image === ''" class="media-object round-media" src="{{this.url}}/assets/public/users/customer_default.png">
+
+                                           <img *ngIf="userchannel_info.channel_image !== ''" class="dpimg media-object round-media" src="{{this.url}}/assets/public/chats/{{userchannel_info.channel_image}}"> 
+               
+                </div>
+              		
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Name" | translate }}</label>
+                  <div class="col-md-9 textfirstcap">
+                  {{userchannel_info.channel_name}}
+                  </div>
+                </div>
+                 <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Description" | translate }}</label>
+                  <div class="col-md-9 textfirstcap">
+                  {{userchannel_info.channel_des}}
+                  </div>
+                </div>
+                    <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Type" | translate }}</label>
+                  <div class="col-md-9 textfirstcap">
+                  {{userchannel_info.channel_type}}
+                  </div>
+                </div>
+                    <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Created Date" | translate }}</label>
+                  <div class="col-md-9">
+                      {{ userchannel_info.created_date | date: 'MMM d, y'}}
+               
+                  </div>
+                </div>
+
+
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Created By" | translate }}</label>
+                  <div class="col-md-9 textfirstcap">
+                  {{user_info.user_name}}
+                  </div>
+                </div>
+                   <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Total Subscribers" | translate }}</label>
+                  <div class="col-md-9">
+                  {{userchannel_info.total_subscribers}}  
+                  </div>
+                </div>
+                    <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Report Count" | translate }}</label>
+                  <div class="col-md-9">
+                  {{userchannel_info.report_count}}  
+                  </div>
+                </div>             
+              </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+             <div class="col-xl-4 col-lg-12" *ngIf="keys.length > 0">
+           <div class="card">
+        <div class="card-body">
+          <div class="card-block">
+            <h4 class="card-title">{{ "Report Details" | translate}} </h4>
+         
+          </div>
+          <ul class="list-group">
+              <li class="list-group-item" *ngFor="let key of keys">
+                      
+              <span class="badge bg-primary white float-right">{{userchannelreport_info[key]}}</span> <span class="hiddyname">{{key}}</span>
+                        
+             </li>        
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+ 
+    <div class="row">
+
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">{{ "Media sharing in Channels" | translate}}</h4>
+        </div>
+        <div class="card-body">
+          <div class="card-block">
+             <div class="height-400">
+            <div id="columnchart_values" style="height: 400px;"></div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- // Striped row layout section end -->
+<style type="text/css">
+	.media-object
+  {
+  display: inline-block !important;
+    height: 120px !important;
+    width: 120px;
+    border-radius: 100px;
+    background-color: #fff;
+    float: left
+  }
+  .textfirstcap:first-letter {
+    text-transform:capitalize;
+}
+
+
+</style>

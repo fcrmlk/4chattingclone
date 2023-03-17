@@ -1,0 +1,86 @@
+
+<header>
+
+  <nav class="navbar header_bg padding15 fixed-top zindex66 border_bottom {{textDir}}" id="custom-nav" role="navigation" [ngStyle]="{'padding': .5 + 'rem' + 1 + 'rem' }">
+    <div class="container width_header">
+      <div class="navbar_header pos_rel">
+        <a class="navbar-brand" href="/">
+          <h1 class="logo">
+            <img [src]="sitelogo" />
+          </h1>
+        </a>
+      </div>
+    
+
+      <div class="help-menu d-flex">
+        <div class="list-option align-self-center ">
+
+          <ul style="margin-bottom: 0px !important">
+            <li>
+              <a [routerLink]="['/help']">{{ "Help" | translate }}</a>
+
+            </li>
+        
+          </ul>
+        </div>
+          <div class="form-group langsel">
+         <select class="form-control" id="basicSelect" (change)="switchLanguage($event.target.value)">
+            <option value="en">{{ 'English' | translate }}</option>
+            <option value="fr">{{ 'French' | translate }}</option>
+            <!-- <option value="ar">{{ 'Arabic' | translate }}</option> -->
+          </select>
+        </div>
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+         
+     
+
+
+      <!--/.nav-collapse -->
+    </div>
+    <!--/.container-fluid -->
+  </nav>
+</header>
+
+<style type="text/css">
+  .list-option{
+  float: left;
+   padding: 10px;
+}
+.langsel
+{
+  float: right;
+  padding: 10px;
+  margin-bottom: unset;
+}
+
+
+.dropdown-menu button{
+  display: block;
+  width: 100%;
+  padding: .25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.list-option
+{
+  padding: 0px !important;
+}
+</style>

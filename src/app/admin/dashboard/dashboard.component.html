@@ -1,0 +1,404 @@
+
+
+
+<!-- Minimal statistics section start -->
+<section id="minimal-statistics">
+  <div class="row">
+    <div class="col-12 mb-1">
+      <div class="content-header">{{ "Dashboard" | translate}}</div>
+      <p class="content-sub-header"></p>
+    </div>
+  </div>
+
+  <div class="row" matchHeight="card">
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card hid-dashboard">
+        <div class="card-body">
+          <div class="px-3 py-3">
+            <div class="media">
+              <div class="media-body text-left">
+                <h3 class="mb-1 primary">{{this.totalusers}}</h3>
+                <span>{{ "Users" | translate}}</span>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="icon-users primary font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card hid-dashboard">
+        <div class="card-body">
+          <div class="px-3 py-3">
+            <div class="media">
+              <div class="media-body text-left">
+                <h3 class="mb-1 primary">{{this.totalgroups}}</h3>
+                <span>{{ "Groups" | translate}}</span>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="icon-bubbles primary font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card hid-dashboard">
+        <div class="card-body">
+          <div class="px-3 py-3">
+            <div class="media">
+              <div class="media-body text-left">
+                <h3 class="mb-1 primary">{{this.totalCalls}}</h3>
+                <span>{{ "Calls" | translate}}</span>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="icon-call-in primary font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card hid-dashboard">
+        <div class="card-body">
+          <div class="px-3 py-3">
+            <div class="media">
+              <div class="media-body text-left">
+                <h3 class="mb-1 primary">{{this.onlineuserscount}}</h3>
+                <span>{{ "Online Users" | translate}}</span>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="icon-user-following primary font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+    <div class="row" matchHeight="card">
+          <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card hid-dashboard">
+        <div class="card-body">
+          <div class="px-3 py-3">
+            <div class="media">
+              <div class="media-body text-left">
+                <h3 class="mb-1 primary">{{this.privatechannelscount}}</h3>
+             
+                <span>{{ "Private Channels" | translate}}</span>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="icon-envelope primary font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card hid-dashboard">
+        <div class="card-body">
+          <div class="px-3 py-3">
+            <div class="media">
+              <div class="media-body text-left">
+                <h3 class="mb-1 primary">{{this.publicchannelscount}}</h3>
+                <span>{{ "Public Channels" | translate}}</span>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="icon-envelope-open primary font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card hid-dashboard">
+        <div class="card-body">
+          <div class="px-3 py-3">
+            <div class="media">
+              <div class="media-body text-left">
+                <h3 class="mb-1 primary">{{this.totalstatuscount}}</h3>
+                <span>{{ "Status" | translate}}</span>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="icon-emoticon-smile primary font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card hid-dashboard">
+        <div class="card-body">
+          <div class="px-3 py-3">
+            <div class="media">
+              <div class="media-body text-left">
+                <h3 class="mb-1 primary">{{this.totalcountries}}</h3>
+             
+                <span>{{ "User Countries" | translate}}</span>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="icon-globe-alt primary font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">{{ "Top Countries Users" | translate}}</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                  
+                      <div id="regions_div" style="width: 100%; height: 100%;"></div>
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+
+
+
+<div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title useract">{{ "Users' Activity" | translate}}</h4>
+           <div class="form-group selectrec">
+                 
+                    <select class="form-control" (change)="onChangeEvent($event)">
+                      <option value="thisyear">{{ "This Year" | translate }}</option>
+                      <option value="thismonth">{{ "This Month" | translate }}</option>
+                      <option value="today">{{ "Today" | translate }}</option>
+                    </select>
+                  
+                  </div>
+         
+        </div>
+
+     
+        <div  class="card-body">
+          <div class="card-block">
+                <div class="height-300 text-center" *ngIf="this.doughnutChartData[0] === 0 && this.doughnutChartData[1] === 0">
+                 <img class="font-large-2" src="{{this.url}}/assets/public/users/no_chat_01.png">
+
+                      <div class="noimgdiv">Sorry...! Nothing is created.</div>
+                </div>
+           
+            <div id="bar-doughnut" class="height-300" *ngIf="this.doughnutChartData[0] !== 0 || this.doughnutChartData[1] !== 0">
+              <canvas *ngIf="this.doughnutChartData.length>0" baseChart class="chart" [data]="doughnutChartData" [labels]="doughnutChartLabels"
+                [options]="doughnutChartOptions" [chartType]="doughnutChartType" [colors]="doughnutChartColors"></canvas>
+
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+    <div class="card-header">
+          <h4 class="card-title">{{ "Users" | translate}}</h4>
+        </div>
+        <div class="card-body">
+          <div class="card-block">
+
+              <div class="height-300 text-center" *ngIf="this.pieChartData.length === 0">
+                 <img class="font-large-2" src="{{this.url}}/assets/public/users/no_chat_01.png">
+
+                      <div class="noimgdiv">Sorry...! No Users.</div>
+                </div>
+           
+            <div id="pie-chart1" class="height-300"  *ngIf="this.pieChartData.length>0">
+              <canvas *ngIf="this.pieChartData.length>0" baseChart class="chart" [data]="pieChartData" [labels]="pieChartLabels" [options]="pieChartOptions"
+                [chartType]="pieChartType" [colors]="pieChartColors"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Status</h4>
+      </div>
+      <div class="height-300 text-center" *ngIf="this.statuschartMediaData.length === 0">
+        <img class="font-large-2" src="{{this.url}}/assets/public/users/no_chat_01.png">
+
+        <div class="noimgdiv">Sorry...! No status.</div>
+      </div>
+      <div class="card-body" *ngIf="this.statuschartMediaData.length>0">
+        <div class="card-block">
+          <div class="height-400">
+            <canvas *ngIf="this.statuschartMediaData.length>0" height="400" baseChart class="chart" [datasets]="statuschartMediaData" [labels]="statusMediaLabels" [options]="areaChartOptions" [colors]="areaChartColors"
+            [legend]="areaChartLegend" [chartType]="areaChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" ></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  <div class="row">
+
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">{{ "Chat Analysis" | translate}}</h4>
+        </div>
+        <div class="card-body">
+          <div class="card-block">
+             <div class="height-400">
+            <div id="columnchart_values" style="height: 400px;"></div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Doughnut Chart Ends -->
+  <div class="row" matchHeight="card" style="height: 420px !important">
+    <div class="col-xl-4 col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-block">
+            <h4 class="card-title">{{ "Recents Users" | translate}}</h4>
+            <p class="card-text"> {{ "Users who joined recently" | translate}}</p>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let user of recentusers">
+                  <a [routerLink]="['/admin/viewuser',user._id]">
+                     <!--  <img class="media-object round-media" src="{{this.url}}/assets/public/users/{{user.user_image}}" style="height: 75px;">-->
+                      <img *ngIf="user.user_image === ''" class="media-object round-media" src="{{this.url}}/assets/public/users/customer_default.png">
+                         <img *ngIf="user.user_image !== ''" class="media-object round-media" src="{{this.url}}/assets/public/users/{{user.user_image}}">
+                   
+              <span class="badge bg-primary float-right"></span><span class="hiddyname textfirstcap">{{user.user_name | slice:0:20}}</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-block">
+            <h4 class="card-title"><!--<span class="badge bg-info white float-right channelcountdiv">{{this.privatechannelscount}}</span>--> {{ "Private Channels" | translate}}     </h4>
+            <p class="card-text">{{"Channels with more subscribers" | translate}}</p>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let channel of privatechannels">
+            
+                 <a [routerLink]="['/admin/viewchannel',channel._id]" >
+                 <img *ngIf="channel.channel_image === ''" class="media-object round-media" src="{{this.url}}/assets/public/users/customer_default.png">
+                 <img *ngIf="channel.channel_image !== ''" class="media-object round-media" src="{{this.url}}/assets/public/chats/{{channel.channel_image}}">
+                      <!-- <img *ngIf="channel.channel_image !== ''" class="media-object round-media" src="{{this.url}}/assets/public/chats/channel.png">-->
+              <span class="badge bg-primary white float-right">{{channel.total_subscribers }}</span> <span class="hiddyname textfirstcap">{{channel.channel_name | slice:0:20}}</span>
+            </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-block">
+            <h4 class="card-title"><!--<span class="badge bg-info white float-right">{{this.publicchannelscount}}</span>-->{{ "Public Channels" | translate}} </h4>
+            <p class="card-text">{{"Trending public channels" |translate}}</p>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let channel of publicchannels">
+                <a [routerLink]="['/admin/viewchannel',channel._id]" >
+                <img *ngIf="channel.channel_image === ''" class="media-object round-media" src="{{this.url}}/assets/public/users/customer_default.png">
+                   <img *ngIf="channel.channel_image !== ''" class="media-object round-media" src="{{this.url}}/assets/public/chats/{{channel.channel_image}}">
+<!--<img *ngIf="channel.channel_image !== ''" class="media-object round-media" src="{{this.url}}/assets/public/chats/channel.png">-->
+              <span class="badge bg-primary white float-right">{{channel.total_subscribers }}</span> <span class="hiddyname textfirstcap">{{channel.channel_name | slice:0:20}}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- // Minimal statistics section end -->
+
+<style type="text/css">
+  .media-object
+  {
+    display: inline-block !important;
+    height: 30px !important;
+    width: 30px;
+  border-radius: 40px;
+  background-color: #fff;
+float: left
+  }
+  .hiddyname
+  {
+    padding-left: 15px;
+  }
+
+    .selectrec 
+  {
+    max-width: 150px;
+    float: right;
+    margin-bottom: unset !important;
+  }
+  .useract
+  {
+    display: inline-block !important;
+  }
+  .selectrec select
+  {
+    height: 25px !important;
+
+  }
+  #columnchart_values svg
+  {
+    max-width: 80% !important;
+  }
+  .list-group-item a
+  {
+    color: rgba(0, 0, 0, 0.87) !important;
+  }
+   .textfirstcap:first-letter {
+    text-transform:capitalize;
+}
+
+.hid-dashboard .font-large-2
+{
+  font-size: 2rem !important;
+}
+
+.noimgdiv
+{
+  color: #008487;font-size: 16px; margin-top: 40px;
+}
+</style>

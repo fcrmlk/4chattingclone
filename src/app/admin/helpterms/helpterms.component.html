@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="content-header">{{ "Help & Terms" | translate }}</div>
+  </div>
+</div>
+<section id="shopping-cart">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+            <div class="px-3">
+                <form class="form">
+                  <div class="form-body">
+                    <div class="row">
+                      <div class="col-sm-12 col-md-9">&nbsp;</div>
+                      <div class="col-sm-12 col-md-3">
+                        <div>
+                            <input class="form-control form-control-sm" type="text" autocomplete="off" name="search" [(ngModel)]="filter" placeholder="{{ 'Search help & terms' | translate }}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+          <div class="card-block tableres">
+            <table class="table table-striped text-left">
+              <thead>
+                <tr>
+                  <th (click)="sort('_id')">{{ "S.no" | translate }}</th>
+                  <th (click)="sort('title')">{{ "Title" | translate }}
+                    <span class="ft-arrow-up" *ngIf="key === 'title'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('type')">{{ "Type" | translate }}
+                    <span class="ft-arrow-up" *ngIf="key === 'type'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <th>{{ "Action" | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let help of allhelps | orderBy: key : !reverse  | filter:filter | paginate: { itemsPerPage: 15, currentPage: p };  let i = index;">
+                  <td>{{i+1}}</td>
+                  <td>
+                    <a style="text-decoration: none;" title="{{help.title}}">{{help.title | slice:0:20 }}
+                      <span *ngIf="help.title.length>20">...</span>
+                    </a>
+                  </td>
+                  <td>{{help.type}}</td>
+                  <td>
+                    <a [routerLink]="['/admin/edithelpterms',help._id]"  class="btn btn-outline-primary mr-1 btn-fab">
+                      <i class="ft-edit-2"></i>
+                    </a>
+                    <a (click)="removehelpterm(help._id)" class="btn channelblockicon btn-outline-danger mr-1 btn-fab">
+                      <i class="ft-trash-2"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr *ngIf="( (allhelps)  && ((allhelps  | filter:filter).length === 0))">
+                  <td colspan="4" style="text-align:center;"> {{ "No help and terms found" | translate }} </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="text-right">
+                    <a [routerLink]="['/admin/newhelpterms']">
+                      <button class="btn btn-raised gradient-red-pink mr-1 white white btn-raised btn-round">
+                        <i class="fa fa-plus-circle"></i> {{ "Add New" | translate }}</button>
+                    </a>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style type="text/css">
+a.channelblockicon
+{
+    color:#FF586B !important;
+}
+</style>

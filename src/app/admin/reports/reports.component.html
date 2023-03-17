@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="content-header">{{ 'Reports' | translate }}</div>
+  </div>
+</div>
+<section id="shopping-cart">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <div class="card-block tableres">
+            <table class="table table-striped text-left">
+              <thead>
+                <tr>
+                  <th (click)="sort('_id')">{{ 'S.no' | translate }}</th>
+                  <th (click)="sort('user_id')">{{ 'Reporter' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='user_id'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('report')">{{ 'Report' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <th (click)="sort('reported_at')">{{ 'Reported at' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='reported_at'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <th>{{ 'Action' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of totalusers | orderBy: key : !reverse  | filter:filter | paginate: { itemsPerPage: 15, currentPage: p };  let i = index;">
+                  <td>{{i+1}}</td>
+                  <td>{{user.user_id.user_name}}</td>
+                  <td>{{user.report | slice:0:20 }}
+                    <span *ngIf="user.report.length>20">...</span>
+                  </td>
+                  <td>{{ user.reported_at | date: 'MMM d, y'}}</td>
+                  <td>
+                    <a (click)="ignorethisreport(user._id)">
+                      <i class="ft-delete danger font-medium-1 mr-2"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr *ngIf="( (totalusers)  && ((totalusers  | filter:filter).length === 0))">
+                  <td colspan="5" style="text-align:center;">{{ 'No reports found' | translate }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

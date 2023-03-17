@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="content-header">{{ "Site Images" | translate }}</div>
+  </div>
+</div>
+<section id="shopping-cart">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <div class="card-block">
+            <ngb-tabset>
+              <ngb-tab title="{{ 'Banner' | translate }}">
+                <ng-template ngbTabContent>
+                  <form class="form" [formGroup]="uploadForm" novalidate (ngSubmit)="uploadBanner(uploadForm.value)">
+                    <div class="col-md-12">
+                      <div class="form-group" style="overflow: hidden;">
+                        <label for="projectinput3">{{ "Banner Image" | translate }}</label>
+                        <input type="file" id="banner_image" class="form-control" formControlName="banner_image" #banner_image />
+                        <small class="form-text text-muted danger" *ngIf="uploadForm.controls['banner_image'].touched && !uploadForm.controls['banner_image'].valid && uploadForm.controls['banner_image'].hasError('required')">{{ "Please upload a image" | translate }}</small>
+                      </div>
+                    </div>
+                    <div class="col-md-12" *ngFor="let site of sitedata">
+                      <div class="form-group">
+                        <img src="{{this.url}}/assets/public/banners/{{site.banner_image}}" class="img-fluid" width="200" height="auto" *ngIf="site.banner_image">
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <button type="button" class="btn btn-secondary mr-1 btn-raised btn-round" (click)="onFormReset()">
+                        <i class="ft-refresh-cw position-right"></i> {{ "Cancel" | translate }}</button>
+                      <button type="submit" class="btn btn-raised gradient-red-pink mr-1 white white btn-raised btn-round">
+                        <i class="ft-thumbs-up position-right"></i> {{ "Save" | translate }}
+                      </button>
+                    </div>
+                  </form>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="{{ 'Logo' | translate }}">
+                <ng-template ngbTabContent>
+                  <form class="form" [formGroup]="uploadlogoForm" novalidate (ngSubmit)="uploadLogo(uploadlogoForm.value)">
+                    <div class="col-md-12">
+                      <div class="form-group" style="overflow: hidden;">
+                        <label for="projectinput3">{{ "Logo" | translate }}</label>
+                        <input type="file" id="logo" class="form-control" formControlName="logo" #logo />
+                        <small class="form-text text-muted danger" *ngIf="uploadlogoForm.controls['logo'].touched && !uploadlogoForm.controls['logo'].valid && uploadlogoForm.controls['logo'].hasError('required')">{{ "Please upload a image" | translate }}</small>
+                      </div>
+                    </div>
+                    <div class="col-md-12" *ngFor="let site of sitedata">
+                      <div class="form-group">
+                        <img src="{{this.url}}/assets/public/logos/{{site.logo}}" class="img-fluid" width="200" height="auto" *ngIf="site.logo">
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <button type="button" class="btn btn-secondary mr-1 btn-raised btn-round" (click)="onFormlogoReset()">
+                        <i class="ft-refresh-cw position-right"></i> {{ "Cancel" | translate }}</button>
+                      <button type="submit" class="btn btn-raised gradient-red-pink mr-1 white white btn-raised btn-round">
+                        <i class="ft-thumbs-up position-right"></i> {{ "Save" | translate }}
+                      </button>
+                    </div>
+                  </form>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="{{ 'Sliders' | translate }}">
+                <ng-template ngbTabContent>
+                  <form class="form" [formGroup]="uploadsliderForm" novalidate (ngSubmit)="uploadSlider(uploadsliderForm.value)">
+                    <div class="col-md-12">
+                      <div class="form-group" style="overflow: hidden;">
+                        <label for="projectinput3">{{ "Sliders" | translate }}</label>
+                        <input type="file" id="slider" class="form-control" formControlName="slider" #slider />
+                        <small class="form-text text-muted danger" *ngIf="uploadsliderForm.controls['slider'].touched && !uploadsliderForm.controls['slider'].valid && uploadsliderForm.controls['slider'].hasError('required')">{{ "Please upload a image" | translate }}</small>
+                      </div>
+                    </div>
+                    <div class="col-md-12" *ngFor="let site of sitedata">
+                      <div class="table-responsive">
+                        <table class="table table-striped text-center" *ngIf="site.sliders?.length > 0">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>{{ "Remove" | translate }}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let slide of site.sliders">
+                              <td>
+                                <img class="img-border gradient-summer width-100" src="{{this.url}}/assets/public/sliders/{{slide}}" />
+                              </td>
+                              <td style="vertical-align: middle !important; ">
+                                <a (click)="removeSlide(slide)">
+                                  <i class="ft-x danger font-medium-1 mr-2"></i>
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <button type="button" class="btn btn-secondary mr-1 btn-raised btn-round" (click)="onFormsliderReset()">
+                        <i class="ft-refresh-cw position-right"></i> {{ "Cancel" | translate }}</button>
+                      <button type="submit" class="btn btn-raised gradient-red-pink mr-1 white white btn-raised btn-round">
+                        <i class="ft-thumbs-up position-right"></i> {{ "Save" | translate }}
+                      </button>
+                    </div>
+                  </form>
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

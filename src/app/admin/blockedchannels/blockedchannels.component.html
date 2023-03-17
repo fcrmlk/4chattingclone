@@ -1,0 +1,130 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="content-header">{{ 'Channels' | translate }}</div>
+  </div>
+</div>
+<section id="shopping-cart">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="px-3">
+            <form class="form">
+              <div class="form-body">
+                <div class="row">
+                  <div class="col-sm-12 col-md-9">&nbsp;</div>
+                  <div class="col-sm-12 col-md-3">
+                    <div>
+                 <input type="text" class="form-control form-control-sm" autocomplete="off" name="search" (keyup)="blockedchannelapplyFilter($event.target.value)" placeholder="{{ 'Search channels' | translate }}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-block tableres">
+            <table class="table table-striped text-left">
+              <thead>
+                <tr>
+                  <th (click)="sort('_id')">{{ 'S.no' | translate }}</th>
+                    <th>{{ 'Profile' | translate }}</th>
+                  <th (click)="sort('channel_name')">{{ 'Name' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='channel_name'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <th>{{ 'Type' | translate }}
+                  </th>
+                  <th (click)="sort('total_subscribers')">{{ 'Subscribers' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='total_subscribers'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                     <th (click)="sort('report_count')">{{ 'Report Count' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report_count'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <!--  <th (click)="sort('report_count')">{{ 'Reports' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report_count'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th> -->
+                   <th >{{ 'Actions' | translate }}</th>
+                  <!--  <th (click)="sort('report_count')">{{ 'Block' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report_count'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th> -->
+                </tr>
+              </thead>
+              <tbody>
+
+                       <tr *ngFor="let user of totalusers | orderBy: key : !reverse  | filter:filter  | paginate: { id: 'blockedchannelpagination', itemsPerPage: 15, currentPage: p, totalItems: totaluserscount };  let i = index;">
+                  
+                      <td *ngIf="(p===1)">{{i+1}}</td>
+                      <td *ngIf="(p!==1)">{{(i+1)+(15*(p-1))}}</td>
+
+
+                      <td>                                          <span class="userpicdiv">  <img *ngIf="user.channel_image === ''" class="media-object round-media" src="{{this.url}}/assets/public/users/customer_default.png">
+
+                                           <img *ngIf="user.channel_image !== ''" class="dpimg media-object round-media" src="{{this.url}}/assets/public/chats/{{user.channel_image}}"> 
+                                          </span>
+                                         </td>
+                  <td class="textfirstcap">
+                    <a style="text-decoration: none;" title="{{user.channel_name}}">{{user.channel_name | slice:0:20 }}
+                      <span *ngIf="user.channel_name.length>20">...</span>
+                    </a>
+                  </td>
+                  <td class="textfirstcap">{{user.channel_type}}</td>
+                  <td>{{user.total_subscribers}}</td>
+                  <td>{{user.report_count}}</td>
+                  <!--  <td>
+                    <a [routerLink]="['/admin/viewreports',user._id]">{{user.report_count}}</a>
+                  </td> -->
+               
+                     <td>
+                    <a [routerLink]="['/admin/viewchannel',user._id]" class="btn btn-outline-primary mr-1 btn-fab">
+                     <i class="ft-zoom-in" ngbTooltip="{{ 'View' | translate }}"></i>
+                    </a>
+                   
+               
+                    <a (click)="managechannel(user._id)" class="btn channelblockicon btn-outline-danger mr-1 btn-fab">
+                      <i class="ft-lock" ngbTooltip="{{ 'Unblock' | translate }}"></i>
+                     
+                    </a>
+                  </td> 
+                </tr>
+                <tr *ngIf="( (totalusers)  && ((totalusers  | filter:filter).length === 0))">
+                  <td colspan="6" style="text-align:center;">{{ 'No channels found' | translate }}</td>
+                </tr>
+              </tbody>
+            </table>
+                   <pagination-controls (pageChange)="getblockedchanelPage($event, filterValue)" id="blockedchannelpagination"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style type="text/css">
+  .media-object
+  {
+    display: inline-block !important;
+    height: 40px !important;
+    width: 40px !important;
+  border-radius: 40px;
+  background-color: #fff;
+  float: left
+  }
+ 
+  .dpimg
+  {
+    position: relative;
+  }
+  .userpicdiv
+  {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+  }
+  .table td
+  {
+    vertical-align: middle !important;
+  }
+   .textfirstcap:first-letter {
+    text-transform:capitalize;
+}
+
+</style>

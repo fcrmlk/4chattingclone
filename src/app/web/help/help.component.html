@@ -1,0 +1,82 @@
+<div class="help_cover">
+  <div class="help_menu">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
+          <div class="help_nav clearfix" data-toggle="collapse" data-target="#help_menu_mobile" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="help_menu_mobile">
+            <span>{{ "Menu" | translate }}</span>
+            <img src="{{this.url}}/assets/frontend/images/nav.png" class="img-fluid" />
+          </div>
+          <div class="help_headings collapse" id="help_menu_mobile" [ngbCollapse]="isCollapsed">
+            <ul class="help-sidebar">
+              <li>
+                <h2 class="active">
+                  <a [routerLink]="['/help']">{{ "Help" | translate }}</a>
+                </h2>
+                <ul class="help-submenu">
+                  <li *ngFor="let help of helptitledatas" [ngClass]="{'active': selectedHelp == help._id}">
+                    <a [routerLink]="['/help',help.title]">
+                      <span>{{help.title | titlecase}}</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li *ngIf="termcount !== 0">
+                <h2 class="active">
+                  <a [routerLink]="['/terms']">{{ "Terms" | translate }}</a>
+             
+                </h2>
+                <ul class="help-submenu">
+                  <li *ngFor="let term of termdatas">
+                    <a [routerLink]="['/terms',term.title]">
+                      <span>{{term.title | titlecase}}</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+           <div class="social_media" *ngIf="allsitedata.facebook_link !== '' || allsitedata.twitter_link !== '' || allsitedata.google_link !== ''">
+              <h1 class="margin_bottom20">{{ "Social Media" | translate }}</h1>
+              <ul>
+                <li *ngIf="allsitedata.facebook_link !== ''">
+                  <a href="{{allsitedata?.facebook_link || '#'}}" target="_blank">
+                    <span class="fb_icon social_icon">
+                      <img src="{{this.url}}/assets/frontend/images/fb.svg" class="img-fluid svg fb">
+                    </span>
+                  </a>
+                </li>
+                <li *ngIf="allsitedata.twitter_link !== ''">
+                  <a href="{{allsitedata?.twitter_link || '#'}}" target="_blank">
+                    <span class="twitter_icon social_icon">
+                      <img src="{{this.url}}/assets/frontend/images/twitter.svg" class="img-fluid svg twitter">
+                    </span>
+                  </a>
+                </li>
+                <li *ngIf="allsitedata.google_link !== ''">
+                  <a href="{{allsitedata?.google_link || '#'}}" target="_blank">
+                    <span class="gplus_icon social_icon">
+                      <img src="{{this.url}}/assets/frontend/images/gplus.svg" class="img-fluid svg gplus">
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
+          <div class="help_desc">
+            <h1 class="help_title">{{ "Help" | translate }}</h1>
+            <div *ngIf="helpcount != 0">
+              <p class="privacy_desc margin_top15"></p>
+              <div>
+                <h2 class="help_subtitle">{{helpdatas.title | titlecase}}</h2>
+                <p class="privacy_desc margin_top15" [innerHTML]="helpdatas.description| keepHtml"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,96 @@
+<div class="chat-application" id="chat-application">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="content-header p-1">{{ channel_info.title }}</div>
+    </div>
+  </div>
+  <section class="chat-app-window" #scrollMe [scrollTop]="scrollMe.scrollHeight" style="background-image: url('assets/img/chatbg.png')">
+    <div class="chats">
+      <div class="chats">
+        <div *ngIf="channelchats && channelchats.length > 0">
+          <div class="chat chat-right" *ngFor="let channel of channelchats">
+            <div class="chat-body">
+              <div class="chat-content">
+                <div *ngIf="channel.message_type === 'image'">
+                  <div class="width-250 resp-width-150">
+                    <img class="card-img-top img-fluid" src="{{this.url}}/assets/public/chats/{{channel.attachment}}">
+                  </div>
+                </div>
+                <p *ngIf="channel.message_type === 'text'">{{ channel.message }}</p>
+                <vg-player *ngIf="channel.message_type === 'audio'">
+                  <audio [vgMedia]="media1" #media1 id="singleAudio" preload="auto" controls>
+                    <source src="{{this.url}}/assets/public/chats/{{channel.attachment}}" type="audio/mp3">
+                  </audio>
+                </vg-player>
+                <vg-player *ngIf="channel.message_type === 'video'" style="height: 250px; width: 250px">
+                  <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+                    <source src="{{this.url}}/assets/public/chats/{{channel.attachment}}" type="video/mp4">
+                  </video>
+                </vg-player>
+                <p class="time">{{channel.message_date | date: 'MMM d, y, h:mm a'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chat" *ngIf="messages && messages.length > 0">
+          <div class="chat chat-right" *ngFor="let message of messages">
+            <div class="chat-body">
+              <div class="chat-content">
+                <div *ngIf="message.textmsgtype === 'image'">
+                  <div class="width-250 resp-width-150">
+                    <img class="card-img-top img-fluid" src="{{this.url}}/assets/public/chats/{{message.textmsg}}">
+                  </div>
+                </div>
+                <p *ngIf="message.textmsgtype === 'text'">{{ message.textmsg }}</p>
+                <vg-player *ngIf="message.textmsgtype === 'audio'">
+                  <audio [vgMedia]="media1" #media1 id="singleAudio" preload="auto" controls>
+                    <source src="{{this.url}}/assets/public/chats/{{message.textmsg}}" type="audio/mp3">
+                  </audio>
+                </vg-player>
+                <vg-player *ngIf="message.textmsgtype === 'video'" style="height: 250px; width: 250px">
+                  <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+                    <source src="{{this.url}}/assets/public/chats/{{message.textmsg}}" type="video/mp4">
+                  </video>
+                </vg-player>
+                <p class="time">{{ message.textmsgat | date: 'h:mm a'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chat_page_loading" *ngIf="showSelected">
+          <img src="assets/img/oval.svg" class="chat_loading_icon" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="chat-app-form bg-blue-grey bg-lighten-5 ">
+    <form class="chat-app-input row">
+      <div class="col-lg-12">
+        <div class="input-group chatgrid">
+          <input type="text" class="form-control" #messageInput placeholder="Say hi buddy" (keydown.enter)="onAddMessage();$event.preventDefault()">
+          <div class="fileUpload btn btn-raised btn-warning" style="border-radius:0rem 0.25rem 0.25rem 0rem;">
+            <i class="ft-upload"></i>
+            <input type="file" name="channeluploads" id="channeluploads" class="upload" accept="audio/*,video/* ,image/* " (change)="uploadChannelUpload()"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>
+<h5 class="mt-3">Help Notes:</h5>
+<!--Basic Accordion Starts-->
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel>
+    <ng-template ngbPanelTitle>
+      <span>
+        <b>How does Admin Channel works ?</b>
+      </span>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <p> Admin can create their own multiple channels to share posts,messages & videos , which will be available at top of the channel page (tab section) for all the app users ( both android & iOS)".
+      </p>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
+<!--Basic Accordion Ends-->

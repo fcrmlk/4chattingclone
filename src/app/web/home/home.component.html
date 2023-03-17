@@ -1,0 +1,52 @@
+<div class="wrapper">
+  <div class="main-wrapper">
+    <div class="bg_cover bg-video" [ngStyle]="{'background-image': 'url(' + sitebanner + ')'}">
+      <div class="custome-container container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+          <div class="landing-content col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="logo-content">
+              <h1 *ngIf="(allsitedata && allsitedata.site_title)">{{ allsitedata.site_title }}</h1>
+              <h4 class="site-content" *ngIf="(allsitedata && allsitedata.banner_text)">{{ allsitedata.banner_text }}</h4>
+            </div>
+            <div class="download-apps">
+              <a href="{{allsitedata?.ios_store || '#'}}" target="_blank">
+                <button class="btnn btn_download">
+                  <i class="fa fa-apple font_size25 align-middle"></i>
+                </button>
+              </a>
+              <a href="{{allsitedata?.android_store || '#'}}" target="_blank">
+                <button class="btnn btn_download">
+                  <i class="fa fa-android font_size25 align-middle"></i>
+                </button>
+              </a>
+            </div>
+          </div>
+          <div class="landing-mobile col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="hiddy-mobil-slide text-center">
+              <div class="mobile-show" style="background: url('assets/frontend/images/phone.png') no-repeat scroll 0 0;">
+                <div class="display-size">
+                  <ngb-carousel>
+                    <ng-template ngbSlide *ngFor="let slide of allsitedata.sliders">
+                      <img class="d-block img-fluid" src="{{this.url}}/assets/public/sliders/{{slide}}">
+                    </ng-template>
+                  </ngb-carousel>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer" [ngStyle]="{'padding-left': 0 }">
+    <div class="container">
+      <div class="row">
+        <div class="copyright">
+          <p>
+            <span *ngIf="(allsitedata && allsitedata.footer_text)">{{ allsitedata.footer_text }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

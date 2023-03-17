@@ -1,0 +1,10 @@
+{
+  "globalDevDependencies": {
+    "core-js": "registry:dt/core-js#0.0.0+20160914114559",
+    "mocha": "registry:env/mocha#2.2.5+20160926180742",
+    "node": "registry:env/node#6.0.0+20161105011511"
+  },
+  "devDependencies": {
+    "chai": "registry:npm/chai#3.5.0+20160723033700"
+  }
+}

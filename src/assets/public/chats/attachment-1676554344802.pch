@@ -1,0 +1,39 @@
+//
+//  Howzu-Prefix.pch
+//  Howzu
+//
+//  Created by BTMani on 24/10/16.
+//  Copyright © 2016 BTMani. All rights reserved.
+//
+
+#ifndef Howzu_Prefix_pch
+#define Howzu_Prefix_pch
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "Utility.h"
+#import "AppDelegate.h"
+#import "SlideMenuController.h"
+#import "CGSuggestionSizeMake.h"
+#import "FilterPage.h"
+#import "KOPopupView.h"
+#import "ParsingFunctionPage.h"
+#import <UIKit/UIKit.h>
+#import "UIImageView+WebCache.h"
+#import "DefensiveClass.h"
+#import "JSON.h"
+#import "BLMultiColorLoader.h"
+#import "config.h"
+#import "BraintreeCore.h"
+#import "BraintreeUI.h"
+#import "PremimumPayment.h"
+#import "UINavigationBar+Helper.h"
+#import "UIScrollView+InfiniteScroll.h"
+#import <StoreKit/StoreKit.h>
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#endif
+
+#endif /* Howzu_Prefix_pch */

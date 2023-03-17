@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="content-header">{{ "Admin Channels" | translate }}</div>
+  </div>
+</div>
+<section id="shopping-cart">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="px-3">
+            <form class="form">
+              <div class="form-body">
+                <div class="row">
+                  <div class="col-sm-12 col-md-9">&nbsp;</div>
+                  <div class="col-sm-12 col-md-3">
+                    <div>
+                 
+
+
+                         <input type="text" class="form-control form-control-sm" autocomplete="off" name="search" (keyup)="adminchannelapplyFilter($event.target.value)" placeholder="{{ 'Search channels' | translate }}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-block tableres">
+            <table class="table table-striped text-left">
+              <thead>
+                <tr>
+                  <th (click)="sort('_id')">{{ "S.no" | translate }}</th>
+                  <th (click)="sort('title')">{{ "Title" | translate }}
+                    <span class="ft-arrow-up" *ngIf="key === 'title'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <th>{{ "Image" | translate }}</th>
+                  <th>{{ "Action" | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+
+                   <tr *ngFor="let channel of allchannels | orderBy: key : !reverse  | filter:filter  | paginate: { id: 'adminpagination', itemsPerPage: 15, currentPage: p, totalItems: allchannelscount };  let i = index;">
+                  <td *ngIf="(p===1)">{{i+1}}</td>
+                  <td *ngIf="(p!==1)">{{(i+1)+(15*(p-1))}}</td>
+                  <td class="textfirstcap">
+                    <a style="text-decoration: none;" title="{{channel.title}}">{{channel.title | slice:0:20 }}
+                      <span *ngIf="channel.title.length>20">...</span>
+                    </a>
+                  </td>
+
+
+                  <td>
+                                        <span class="userpicdiv">  <img *ngIf="channel.channel_image === ''" class="media-object round-media" src="{{this.url}}/assets/public/users/customer_default.png">
+
+                                           <img *ngIf="channel.channel_image !== ''" class="dpimg media-object round-media" src="{{this.url}}/assets/public/chats/{{channel.channel_image}}"> 
+                                          </span>
+
+               
+                  </td>
+                  <td>
+                    <a [routerLink]="['/admin/messagetochannel',channel._id]">
+                      <button type="button" class="btn btn-outline-primary btn-sm mr-1 mb-1" placement="top" ngbTooltip="{{ 'Post Message' | translate }}">
+                        {{ 'Post' | translate }}
+                      </button>
+                    </a>
+                    <a (click)="removechannelmessages(channel._id)">
+                      <button type="button" class="btn btn-outline-warning btn-sm mr-1 mb-1" placement="top" ngbTooltip="{{ 'Clear Messages' | translate }}">
+                        {{ 'Clear' | translate }}
+                      </button>
+                    </a>
+                    <a (click)="removechannel(channel._id)">
+                      <button type="button" class="btn btn-outline-danger btn-sm mr-1 mb-1" placement="top" ngbTooltip="{{ 'Delete Channel' | translate }}">
+                        {{ 'Delete' | translate }}
+                      </button>
+                    </a>
+                  </td>
+                </tr>
+                <tr *ngIf="((allchannels)  && ((allchannels  | filter:filter).length === 0))">
+                  <td colspan="4" style="text-align:center;">{{ "No channels found" | translate }}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="text-right">
+                    <a [routerLink]="['/admin/newadminchannel']">
+                      <button class="btn btn-raised gradient-red-pink mr-1 white white btn-raised btn-round">
+                        <i class="fa fa-plus-circle"></i> {{ "Add New Channel" | translate }}</button>
+                    </a>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+             <pagination-controls (pageChange)="adminchannelgetPage($event, filterValue)" id="adminpagination"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style type="text/css">
+  .media-object
+  {
+    display: inline-block !important;
+    height: 40px !important;
+    width: 40px !important;
+  border-radius: 40px;
+  background-color: #fff;
+  float: left
+  }
+ 
+  .dpimg
+  {
+    position: relative;
+  }
+  .userpicdiv
+  {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+  }
+    .table td
+  {
+    vertical-align: middle !important;
+  }
+   .textfirstcap:first-letter {
+    text-transform:capitalize;
+}
+
+</style>

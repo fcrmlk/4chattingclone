@@ -1,0 +1,98 @@
+<!-- Reactive Form Validaton Starts -->
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">{{ "App Update" | translate }}</h4>
+      </div>
+      <div class="card-body">
+        <div class="card-block">
+          <ngb-tabset>
+            <ngb-tab title="{{ 'Android' | translate }}">
+              <ng-template ngbTabContent>
+                <form [formGroup]="newsiteForm" novalidate (ngSubmit)="onSiteFormSubmit(newsiteForm.value)">
+                  <div class="form-group">
+                    <label for="inputEmail">{{ "Version" | translate }}</label>
+                    <input type="text" class="form-control round" formControlName="android_version" #android_version [ngModel]="sitedata && sitedata?.android_version"
+                      [maxlength]="15">
+                    <small class="form-text text-muted danger" *ngIf="newsiteForm.controls['android_version'].touched && !newsiteForm.controls['android_version'].valid && newsiteForm.controls['android_version'].hasError('required')">{{ "Please enter a app version" | translate }}</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail">{{ "Update Type" | translate }}</label>
+                    <select class="form-control" #android_update formControlName="android_update" [ngModel]="sitedata && sitedata?.android_update">
+                      <option value="">{{ "Update Type" | translate }}</option>
+                      <option value="0">{{ "Normal Update" | translate }}</option>
+                      <option value="1">{{ "Force Update" | translate }}</option>
+                    </select>
+                    <small class="form-text text-muted danger" *ngIf="!newsiteForm.get('android_update').valid && (newsiteForm.get('android_update').dirty || newsiteForm.get('android_update').touched)">{{ "Please select a update type" | translate }}</small>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-secondary mr-1 btn-raised btn-round" (click)="onFormReset()">
+                      <i class="ft-refresh-cw position-right"></i> {{ "Cancel" | translate }}</button>
+                    <button type="submit" class="btn btn-raised gradient-red-pink mr-1 white white btn-raised btn-round">
+                      <i class="ft-thumbs-up position-right"></i> {{ "Save" | translate }}</button>
+                  </div>
+                </form>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="{{ 'iOS' | translate }}">
+              <ng-template ngbTabContent>
+                <form [formGroup]="newiosForm" novalidate (ngSubmit)="oniosFormSubmit(newiosForm.value)">
+                  <div class="form-group">
+                    <label for="inputEmail">{{ "Version" | translate }}</label>
+                    <input type="text" class="form-control round" formControlName="ios_version" #ios_version [ngModel]="sitedata && sitedata?.ios_version"
+                      [maxlength]="15">
+                    <small class="form-text text-muted danger" *ngIf="newiosForm.controls['ios_version'].touched && !newiosForm.controls['ios_version'].valid && newiosForm.controls['ios_version'].hasError('required')">{{ "Please enter a app version" | translate }}</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail">{{ "Update Type" | translate }}</label>
+                    <select class="form-control" #ios_update formControlName="ios_update" [ngModel]="sitedata && sitedata?.ios_update">
+                      <option value="">{{ "Update Type" | translate }}</option>
+                      <option value="0">{{ "Normal Update" | translate }}</option>
+                      <option value="1">{{ "Force Update" | translate }}</option>
+                    </select>
+                    <small class="form-text text-muted danger" *ngIf="!newiosForm.get('ios_update').valid && (newiosForm.get('ios_update').dirty || newiosForm.get('ios_update').touched)">{{ "Please select a update type" | translate }}</small>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-secondary mr-1 btn-raised btn-round" (click)="oniosFormReset()">
+                      <i class="ft-refresh-cw position-right"></i> {{ "Cancel" | translate }}</button>
+                    <button type="submit" class="btn btn-raised gradient-red-pink mr-1 white white btn-raised btn-round">
+                      <i class="ft-thumbs-up position-right"></i> {{ "Save" | translate }}</button>
+                  </div>
+                </form>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
+          <h5 class="mt-3">Help Notes:</h5>
+          <!--Basic Accordion Starts-->
+          <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0,ngb-panel-1">
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span>
+                  <b>How does normal update works ?</b>
+                </span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                <p> Leave the choice to the users where they can update the new version anytime they want and still they can
+                  use the existing version</p>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span>
+                  <b>How does force update works ?</b>
+                </span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                <p> It forces the users by showing a popup in the app to update the app. Without updating this new version, the
+                  users cannot use the previous version</p>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+          <!--Basic Accordion Ends-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reactive Form Validaton Ends -->

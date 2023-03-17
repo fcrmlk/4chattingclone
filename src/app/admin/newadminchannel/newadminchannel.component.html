@@ -1,0 +1,46 @@
+<!-- Reactive Form Validaton Starts -->
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">{{ "Channel" | translate }}</h4>
+      </div>
+      <div class="card-body">
+        <div class="card-block">
+          <form [formGroup]="newhelpForm" novalidate (ngSubmit)="onHelpFormSubmit(newhelpForm.value)">
+            <div class="form-group">
+              <label for="inputEmail">{{ "Title" | translate }}</label>
+              <input type="text" class="form-control round" formControlName="title" id="title" #title [maxlength]="30">
+              <small class="form-text text-muted danger" *ngIf="newhelpForm.controls['title'].touched && !newhelpForm.controls['title'].valid && newhelpForm.controls['title'].hasError('required')">{{ "Please enter a title" | translate }}</small>
+              <small class="form-text text-muted danger" *ngIf="newhelpForm.controls['title'].touched && !newhelpForm.controls['title'].valid && newhelpForm.controls['title'].hasError('minlength')">{{ "Title must be at least 3 characters long" | translate }}</small>
+              <small class="form-text text-muted danger" *ngIf="newhelpForm.controls['title'].touched && !newhelpForm.controls['title'].valid && newhelpForm.controls['title'].hasError('maxlength')">{{ "Title can be max 30 characters long" | translate }}</small>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail">{{ "Description" | translate }}</label>
+              <div class="row">
+                <div class="col-md-12 col-lg-12">
+                  <textarea rows="5" class="form-control round" #description id="description" formControlName="description"></textarea>
+                  <small class="form-text text-muted danger" *ngIf="newhelpForm.controls['description'].touched && !newhelpForm.controls['description'].valid && newhelpForm.controls['description'].hasError('required')">{{ "Please enter a description" | translate }}</small>
+                  <small class="form-text text-muted danger" *ngIf="newhelpForm.controls['description'].touched && !newhelpForm.controls['description'].valid && newhelpForm.controls['description'].hasError('minlength')">{{ "Description must be at least 3 characters long" | translate }}</small>
+                  <small class="form-text text-muted danger" *ngIf="newhelpForm.controls['description'].touched && !newhelpForm.controls['description'].valid && newhelpForm.controls['description'].hasError('maxlength')">{{ "Description can be max 250 characters long" | translate }}</small>
+                </div>
+              </div>
+            </div>
+            <div class="form-group" style="overflow: hidden;">
+              <label for="inputEmail">{{ "Channel Image" | translate }}</label>
+              <input type="file" id="channel_image" class="form-control" formControlName="channel_image" #channel_image />
+              <small class="form-text text-muted danger" *ngIf="newhelpForm.controls['channel_image'].touched && !newhelpForm.controls['channel_image'].valid && newhelpForm.controls['channel_image'].hasError('required')">{{ "Please upload a image" | translate }}</small>
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-secondary mr-1 btn-raised btn-round" (click)="onFormReset()">
+                <i class="ft-refresh-cw position-right"></i> {{ "Cancel" | translate }}</button>
+              <button    type="submit"  prevent-double-submit class="btn btn-raised gradient-red-pink mr-1 white white btn-raised btn-round">
+                <i class="ft-thumbs-up position-right"></i> {{ "Save" | translate }}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reactive Form Validaton Ends -->

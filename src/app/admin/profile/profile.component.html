@@ -1,0 +1,63 @@
+<!-- Striped row layout section start -->
+<section id="striped-row-form-layouts">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="content-header">{{ "Profile" | translate }}</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <div class="px-3">
+            <form class="form form-horizontal striped-rows form-bordered" [formGroup]="profileForm" (ngSubmit)="onGeneralFormSubmit(profileForm.value)"
+              novalidate>
+              <div class="form-body">
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Name" | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="text" formControlName="name" id="name" #name [ngModel]="admindata && admindata?.name" class="form-control round">
+                    <small class="form-text text-muted danger" *ngIf="(profileForm.controls['name'].touched) && (!profileForm.controls['name'].valid) && ((profileForm.controls['name'].hasError('required'))  || (profileForm.controls['name'].hasError('pattern')))">{{ "Please enter a name" | translate }}</small>
+                    <small class="form-text text-muted danger" *ngIf="(profileForm.controls['name'].touched) && (!profileForm.controls['name'].valid) && ((profileForm.controls['name'].hasError('minlength'))  || (profileForm.controls['name'].hasError('maxlength')))">{{ "Name must be 3 to 30 characters long" | translate }}</small>
+                  </div>
+                </div>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Email" | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="text" formControlName="username" id="username" #username [ngModel]="admindata && admindata?.username" class="form-control round">
+                    <small class="form-text text-muted danger" *ngIf="(profileForm.controls['username'].touched) && (!profileForm.controls['username'].valid) && ((profileForm.controls['username'].hasError('required'))  || profileForm.controls['username'].hasError('pattern'))">{{ "Please enter a valid email" | translate }}</small>
+                  </div>
+                </div>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "New Password" | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="password" formControlName="newpassword" id="newpassword" class="form-control round" (keypress)="nospaceallowed($event)">
+                    <small class="form-text text-muted danger" *ngIf="profileForm.controls['newpassword'].touched && !profileForm.controls['newpassword'].valid && ((profileForm.controls['newpassword'].hasError('minlength')) || (profileForm.controls['newpassword'].hasError('maxlength')))">{{ "Password must be 6 to 12 characters long" | translate }}</small>
+                  </div>
+                </div>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Confirm Password" | translate }}</label>
+                  <div class="col-md-9">
+                    <input type="password" formControlName="confirmpassword" id="confirmpassword" class="form-control round" (keypress)="nospaceallowed($event)">
+                    <small class="form-text text-muted danger" *ngIf="profileForm.controls['confirmpassword'].touched && !profileForm.controls['confirmpassword'].valid && ((profileForm.controls['confirmpassword'].hasError('minlength')) || (profileForm.controls['confirmpassword'].hasError('maxlength')))">{{ "Confirm Password must be 6 to 12 characters long" | translate }}</small>
+                  </div>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn btn-secondary mr-1 btn-raised btn-round" (click)="onFormReset()">
+                  <i class="ft-refresh-cw position-right"></i> {{ "Cancel" | translate }}
+                </button>
+                <button type="submit" class="btn btn-raised gradient-red-pink mr-1 white white btn-raised btn-round">
+                  <i class="ft-thumbs-up position-right"></i> {{ "Save" | translate }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- // Striped row layout section end -->

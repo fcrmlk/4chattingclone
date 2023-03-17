@@ -1,0 +1,50 @@
+<!--Login Page Starts-->
+<section id="login">
+  <div class="container-fluid gradient-purple-bliss">
+    <div class="row full-height-vh">
+      <div class="col-12 d-flex align-items-center justify-content-center">
+        <div class="card card-inverse border-grey border-lighten-3 px-1 py-1 box-shadow-3 text-center width-400">
+          <div class="card-body">
+            <div class="card-block">
+              <h2 class="primary">
+                <img class="mt-3 mb-3" [src]="sitelogo" width="190">
+              </h2>
+              <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit(loginForm.value)" novalidate>
+                <div class="form-group">
+                  <div class="position-relative has-icon-left">
+                    <input type="email" class="form-control round" #admin_username formControlName="admin_username" placeholder="{{ 'Enter your email' | translate }}"
+                      autocomplete=off required>
+                    <small class="form-text text-muted danger" *ngIf="(loginForm.controls['admin_username'].touched) && (!loginForm.controls['admin_username'].valid) && ((loginForm.controls['admin_username'].hasError('required')) || (loginForm.controls['admin_username'].hasError('pattern')))">{{ 'Please enter a valid email' | translate }}</small>
+                    <div class="form-control-position">
+                      <i class="ft-user danger"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="position-relative has-icon-left">
+                    <input type="password" class="form-control round" #admin_password formControlName="admin_password" placeholder="{{ 'Enter your password' | translate }}"
+                      autocomplete=off required>
+                    <small class="form-text text-muted danger" *ngIf="(loginForm.controls['admin_password'].touched) && (!loginForm.controls['admin_password'].valid) && ((loginForm.controls['admin_password'].hasError('required')) || (loginForm.controls['admin_password'].hasError('pattern')) )">{{ 'Please enter a valid password' | translate }}</small>
+                    <small class="form-text text-muted danger" *ngIf="loginForm.controls['admin_password'].touched && !loginForm.controls['admin_password'].valid && ((loginForm.controls['admin_password'].hasError('minlength')) || (loginForm.controls['admin_password'].hasError('maxlength')))">{{ 'Password must be 6 to 12 characters long' | translate }}</small>
+                    <div class="form-control-position">
+                      <i class="ft-user danger"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <button type="submit" class="btn btn-raised btn-block btn-raised btn-round gradient-red-pink white">
+                        <i class="ft-thumbs-up position-right"></i> {{ "Sign In" | translate }}</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Login Page Ends-->

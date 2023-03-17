@@ -1,0 +1,51 @@
+<!-- Reactive Form Validaton Starts -->
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">{{ "Help & Terms" | translate }}</h4>
+      </div>
+      <div class="card-body">
+        <div class="card-block">
+          <form [formGroup]="edithelpForm" (ngSubmit)="onHelpFormSubmit(edithelpForm.value)" novalidate>
+            <div class="form-group">
+              <label for="inputEmail">{{ "Title" | translate }}</label>
+              <input type="text" class="form-control round" id="title" formControlName="title" #title [(ngModel)]="edithelpdata.title"
+                required>
+              <small class="form-text text-muted danger" *ngIf="edithelpForm.controls['title'].touched && !edithelpForm.controls['title'].valid && edithelpForm.controls['title'].hasError('required')">{{ "Please enter a title" | translate }}</small>
+              <small class="form-text text-muted danger" *ngIf="edithelpForm.controls['title'].touched && !edithelpForm.controls['title'].valid && edithelpForm.controls['title'].hasError('minlength')">{{ "Title must be at least 3 characters long" | translate }}</small>
+              <small class="form-text text-muted danger" *ngIf="edithelpForm.controls['title'].touched && !edithelpForm.controls['title'].valid && edithelpForm.controls['title'].hasError('maxlength')">{{ "Title can be max 30 characters long" | translate }}</small>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail">{{ "Type" | translate }}</label>
+              <select class="form-control round" id="type" formControlName="type" #type [(ngModel)]="edithelpdata.type" required>
+                <option value="">{{ "Select type" | translate }}</option>
+                <option value="helps">{{ "Helps" | translate }}</option>
+                <option value="terms">{{ "Terms" | translate }}</option>
+              </select>
+              <small class="form-text text-muted danger" *ngIf="!edithelpForm.get('type').valid && (edithelpForm.get('type').dirty || edithelpForm.get('type').touched)">{{ "Please select a type" | translate }}</small>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail">{{ "Description" | translate }}</label>
+              <div class="row">
+                <div class="col-md-12 col-lg-12">
+                  <quill-editor id="description" #description [modules]="editor_modules" [(ngModel)]="edithelpdata.description" (onEditorCreated)="setFocus($event)"
+                    formControlName="description" [style]="{height: '200px'}" required></quill-editor>
+                  <small class="form-text text-muted danger" *ngIf="edithelpForm.controls['description'].touched && !edithelpForm.controls['description'].valid && edithelpForm.controls['description'].hasError('required')">{{ "Please enter a description" | translate }}</small>
+                  <small class="form-text text-muted danger" *ngIf="edithelpForm.controls['description'].touched && !edithelpForm.controls['description'].valid && edithelpForm.controls['description'].hasError('minlength')">{{ "Description must be at least 3 characters long" | translate }}</small>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-secondary mr-1 btn-raised btn-round" (click)="onFormReset()">
+                <i class="ft-refresh-cw position-right"></i> {{ "Cancel" | translate }}</button>
+              <button type="submit" class="btn btn-raised gradient-red-pink mr-1 white white btn-raised btn-round">
+                <i class="ft-thumbs-up position-right"></i> {{ "Save" | translate }}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reactive Form Validaton Ends -->

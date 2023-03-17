@@ -1,0 +1,413 @@
+<!-- Striped row layout section start -->
+<section id="striped-row-form-layouts">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="content-header">{{ "Profile" | translate }}</div>
+    </div>
+  </div>
+
+
+
+
+   <div class="row">
+    <div class="col-xl-8 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <div class="px-3">
+         
+              <div class="form-body">
+
+              	 <div class="form-group row last">
+               
+              	<img *ngIf="user_info.user_image === ''" class="media-object round-media" src="{{this.url}}/assets/public/users/customer_default.png">
+
+                                           <img *ngIf="user_info.user_image !== ''" class="dpimg media-object round-media" src="{{this.url}}/assets/public/users/{{user_info.user_image}}"> <span *ngIf="user_info.livestatus === 'online'"class="activestatus"></span>
+                                            <span *ngIf="user_info.livestatus !== 'onine'" class="awaystatus"></span>
+                </div>
+              		
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Name" | translate }}</label>
+                  <div class="col-md-9">
+                  {{user_info.user_name}}
+                  </div>
+                </div>
+                   <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Name" | translate }}</label>
+                  <div class="col-md-9">
+                  {{user_info.about}}
+                  </div>
+                </div>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Phone Number" | translate }}</label>
+                  <div class="col-md-9">
+                   {{user_info.phone_no}}
+                  </div>
+                </div>
+                     <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Country" | translate }}</label>
+                  <div class="col-md-9">
+                   {{user_info.country_code}}
+                  </div>
+                </div>
+                <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Joined at" | translate }}</label>
+                  <div class="col-md-9">
+                  {{ user_info.join_at | date: 'MMM d, y'}}
+                  </div>
+                </div>
+                  <div class="form-group row last">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Groups" | translate }}</label>
+                  <div class="col-md-9">
+                   {{this.usergroup_info.length}}
+                  </div>
+                </div>
+
+                    <div class="form-group row last" *ngIf="user_info.livestatus !== 'onine'">
+                  <label class="col-md-3 label-control" for="projectinput5">{{ "Last seen" | translate }}</label>
+                  <div class="col-md-9">
+                   {{user_info.last_seen}}
+                  </div>
+                </div>
+
+             
+              </div>
+          
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+         <div class="col-xl-4 col-lg-12">
+           <div class="card">
+        <div class="card-body">
+          <div class="card-block">
+            <h4 class="card-title">{{ "Media Sharing" | translate}} </h4>
+            <p class="card-text">{{"Media shared through chat and status" |translate}}</p>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item" *ngIf="user_info.chat_image_count !== ''">
+            
+    <span class="badge bg-primary white float-right">{{user_info.chat_image_count }}</span> <span class="hiddyname">{{ "Chat Images" | translate}}</span>
+              
+            </li>
+              <li class="list-group-item" *ngIf="user_info.chat_video_count !== ''">
+            
+    <span class="badge bg-primary white float-right">{{user_info.chat_video_count }}</span> <span class="hiddyname">{{ "Chat Videos" | translate}}</span>
+              
+            </li>
+              <li class="list-group-item" *ngIf="user_info.chat_audio_count !== ''">
+            
+    <span class="badge bg-primary white float-right">{{user_info.chat_audio_count }}</span> <span class="hiddyname">{{ "Chat Audios" | translate}}</span>
+              
+            </li>
+             <li class="list-group-item" *ngIf="user_info.chat_file_count !== ''">
+            
+    <span class="badge bg-primary white float-right">{{user_info.chat_file_count }}</span> <span class="hiddyname">{{ "Chat Files" | translate}}</span>
+              
+            </li>
+             <li class="list-group-item" *ngIf="user_info.chat_text_count !== ''">
+            
+    <span class="badge bg-primary white float-right">{{user_info.chat_text_count }}</span> <span class="hiddyname">{{ "Chat Texts" | translate}}</span>
+              
+            </li>
+             <li class="list-group-item" *ngIf="user_info.chat_contact_count !== ''">
+            
+    <span class="badge bg-primary white float-right">{{user_info.chat_contact_count }}</span> <span class="hiddyname">{{ "Chat Contacts" | translate}}</span>
+              
+            </li>
+             <li class="list-group-item" *ngIf="user_info.chat_location_count !== ''">
+            
+    <span class="badge bg-primary white float-right">{{user_info.chat_location_count }}</span> <span class="hiddyname">{{ "Chat Locations" | translate}}</span>
+              
+            </li>
+             <li class="list-group-item" *ngIf="user_info.status_image_count !== ''">
+            
+    <span class="badge bg-primary white float-right">{{user_info.status_image_count }}</span> <span class="hiddyname">{{ "Status Images" | translate}}</span>
+              
+            </li>
+             <li class="list-group-item" *ngIf="user_info.status_video_count !== ''">
+            
+    <span class="badge bg-primary white float-right">{{user_info.status_video_count }}</span> <span class="hiddyname">{{ "Status Videos" | translate}}</span>
+              
+            </li>
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="shopping-cart">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <div class="card-block">
+            <ngb-tabset>
+              <ngb-tab title="{{ 'Own Channels' | translate }}">
+                <ng-template ngbTabContent>
+               
+                 
+              
+                      <div class="card-block tableres">
+            <table class="table table-striped text-left">
+              <thead>
+                <tr>
+                  <th (click)="sort('_id')">{{ 'S.no' | translate }}</th>
+                      <th>{{ 'Image' | translate }}
+
+                  <th (click)="sort('channel_name')">{{ 'Name' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='channel_name'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <th>{{ 'Type' | translate }}
+                  </th>
+                  <th (click)="sort('total_subscribers')">{{ 'Subscribers' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='total_subscribers'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                     <th (click)="sort('report_count')">{{ 'Report Count' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report_count'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <!--  <th (click)="sort('report_count')">{{ 'Reports' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report_count'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th> -->
+               
+                  <!--  <th (click)="sort('report_count')">{{ 'Block' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report_count'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th> -->
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let user of ownchannels_info | orderBy: key : !reverse  | filter:filter | paginate: { itemsPerPage: 15, currentPage: p };  let i = index;">
+                  <td>{{i+1}}</td>
+                       <td> <img *ngIf="user.channel_image === ''" class="channel-media round-media" src="{{this.url}}/assets/public/users/customer_default.png">
+
+                                           <img *ngIf="user.channel_image !== ''" class=" channel-media round-media" src="{{this.url}}/assets/public/users/{{user.channel_image}}"> </td>
+                  <td>
+                    <a style="text-decoration: none;" title="{{user.channel_name}}">{{user.channel_name | slice:0:20 }}
+                      <span *ngIf="user.channel_name.length>20">...</span>
+                    </a>
+                  </td>
+                  <td>{{user.channel_type}}</td>
+                  <td>{{user.total_subscribers}}</td>
+                  <td>{{user.report_count}} </td>
+                  <!--  <td>
+                    <a [routerLink]="['/admin/viewreports',user._id]">{{user.report_count}}</a>
+                  </td> -->
+             
+                </tr>
+                <tr *ngIf="( (ownchannels_info)  && ((ownchannels_info  | filter:filter).length === 0))">
+                  <td colspan="6" style="text-align:center;">{{ 'No channels found' | translate }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+                
+                    
+                
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="{{ 'Subscribed Channels' | translate }}">
+                 
+                    <ng-template ngbTabContent>
+           
+                      <div class="card-block tableres" >
+            <table class="table table-striped text-left">
+              <thead>
+                <tr>
+                  <th (click)="sort('_id')">{{ 'S.no' | translate }}</th>
+                      <th>{{ 'Image' | translate }}
+
+                  <th (click)="sort('channel_name')">{{ 'Name' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='channel_name'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                    <span _ngcontent-edp-c8="" class="badge badge-danger badge-pill float-right"> <i class="ft-brll-off" ngbTooltip="{{ 'Blocked' | translate }}"></i></span>
+                  </th>
+                  <th>{{ 'Type' | translate }}
+                  </th>
+                  <th (click)="sort('total_subscribers')">{{ 'Subscribers' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='total_subscribers'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                     <th (click)="sort('report_count')">{{ 'Report Count' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report_count'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <!--  <th (click)="sort('report_count')">{{ 'Reports' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report_count'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th> -->
+               
+                  <!--  <th (click)="sort('report_count')">{{ 'Block' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report_count'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th> -->
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let subscribed of subscribedchannels_info | orderBy: key : !reverse  | filter:filter | paginate: { itemsPerPage: 15, currentPage: p };  let i = index;">
+                  <td>{{i+1}}</td>
+                       <td> <img *ngIf="subscribed.channel_image === ''" class="channel-media round-media" src="{{this.url}}/assets/public/users/customer_default.png">
+
+                                           <img *ngIf="subscribed.channel_image !== ''" class=" channel-media round-media" src="{{this.url}}/assets/public/users/{{subscribed.channel_image}}"> </td>
+                  <td>
+                    <a style="text-decoration: none;" title="{{subscribed.channel_name}}">{{subscribed.channel_name | slice:0:20 }}
+                      <span *ngIf="subscribed.channel_name.length>20">...</span>
+                    </a>
+                  </td>
+                  <td>{{subscribed.channel_type}}</td>
+                  <td>{{subscribed.total_subscribers}}</td>
+                  <td>{{subscribed.report_count}} </td>
+                  <!--  <td>
+                    <a [routerLink]="['/admin/viewreports',user._id]">{{user.report_count}}</a>
+                  </td> -->
+             
+                </tr>
+
+                <tr *ngIf="( (subscribedchannels_info)  && ((subscribedchannels_info  | filter:filter).length === 0))">
+                  <td colspan="6" style="text-align:center;">{{ 'No channels found' | translate }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+      
+              
+               
+                </ng-template>
+                  
+              
+              </ngb-tab>
+              <ngb-tab title="{{ 'Reported Channels' | translate }}">
+                <ng-template ngbTabContent>
+               
+                      
+                      <div class="card-block tableres">
+            <table class="table table-striped text-left">
+              <thead>
+                <tr>
+                  <th (click)="sort('_id')">{{ 'S.no' | translate }}</th>
+                      <th>{{ 'Image' | translate }}
+
+                  <th (click)="sort('channel_name')">{{ 'Name' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='channel_name'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <th>{{ 'Type' | translate }}
+                  </th>
+                  <th (click)="sort('total_subscribers')">{{ 'Subscribers' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='total_subscribers'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                     <th (click)="sort('report_count')">{{ 'Report Count' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report_count'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th>
+                  <!--  <th (click)="sort('report_count')">{{ 'Reports' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report_count'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th> -->
+               
+                  <!--  <th (click)="sort('report_count')">{{ 'Block' | translate }}
+                    <span class="ft-arrow-up" *ngIf="key =='report_count'" [ngClass]="{'ft-arrow-up':reverse,'ft-arrow-down':!reverse}"></span>
+                  </th> -->
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let reported of reportedchannels_info | orderBy: key : !reverse  | filter:filter | paginate: { itemsPerPage: 15, currentPage: p };  let i = index;">
+                  <td>{{i+1}}</td>
+                       <td> <img *ngIf="reported.channel_image === ''" class="channel-media round-media" src="{{this.url}}/assets/public/users/customer_default.png">
+
+                                           <img *ngIf="reported.channel_image !== ''" class=" channel-media round-media" src="{{this.url}}/assets/public/users/{{reported.channel_image}}"> </td>
+                  <td>
+                    <a style="text-decoration: none;" title="{{reported.channel_name}}">{{reported.channel_name | slice:0:20 }}
+                      <span *ngIf="reported.channel_name.length>20">...</span>
+                    </a>
+                  </td>
+                  <td>{{reported.channel_type}}</td>
+                  <td>{{reported.total_subscribers}}</td>
+                  <td>{{reported.report_count}} </td>
+                  <!--  <td>
+                    <a [routerLink]="['/admin/viewreports',user._id]">{{user.report_count}}</a>
+                  </td> -->
+             
+                </tr>
+                <tr *ngIf="( (reportedchannels_info)  && ((reportedchannels_info  | filter:filter).length === 0))">
+                  <td colspan="6" style="text-align:center;">{{ 'No channels found' | translate }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+        
+              
+               
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- // Striped row layout section end -->
+<style type="text/css">
+	.media-object
+  {
+        display: inline-block !important;
+        height: 120px !important;
+      width: 120px;
+      border-radius: 100px;
+      background-color: #fff;
+      padding: 10px 10px;
+      float: left
+  }
+
+  .channel-media
+  {
+    display: inline-block !important;
+    height: 40px !important;
+    width: 40px;
+  border-radius: 40px;
+  background-color: #fff;
+float: left
+  }
+
+  .activestatus
+  {
+      background-color: #54d371 !important;
+  min-width: 12px !important;
+  min-height: 12px;
+  border-radius: 10px;
+  position: absolute;
+  border-color: #fff;
+  left: 100px;
+   position: absolute;
+   top: 65px;
+
+  }
+    .awaystatus
+  {
+      background-color: #6c757d !important;
+ min-width: 12px !important;
+  min-height: 12px;
+  border-radius: 10px;
+  position: absolute;
+  border-color: #fff;
+  left: 100px;
+   position: absolute;
+   top: 65px;
+  }
+  .dpimg
+  {
+    position: relative;
+  }
+
+
+</style>
+
+

@@ -1,0 +1,45 @@
+
+/* RTL Style Start */
+body[dir="rtl"] #custom-nav,body[dir="rtl"]
+.bg_cover,body[dir="rtl"]
+.main-footer,body[dir="rtl"]
+.help_menu {
+  direction: rtl;
+}
+
+body[dir="rtl"] .help_desc,body[dir="rtl"]
+.landing-content,body[dir="rtl"]
+.help-sidebar {
+  text-align: right !important;
+}
+
+body[dir="rtl"] .btnn.btn_download {
+  margin-right: 0;
+  margin-left: 70px;
+}
+
+body[dir="rtl"] ul ul.help-submenu li.active a {
+  border-right: 3px solid #05ac90;
+  border-left: none !important;
+}
+
+body[dir="rtl"] ul ul.help-submenu,body[dir="rtl"]
+.help-sidebar,body[dir="rtl"] .social_media ul {
+  padding-right: 0;
+}
+
+body[dir="rtl"] #help_menu_mobile {
+
+  text-align: right;
+  padding-right: 30px;
+
+}
+@media (max-width:360px){
+  body[dir="rtl"] .langsel[_ngcontent-c1] {
+    padding: 0px;
+  }
+  body[dir="rtl"] .navbar > .container{
+    display: contents !important
+  }
+}
+/* RTL Style End */
